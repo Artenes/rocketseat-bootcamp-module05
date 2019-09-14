@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { InputForm, Form, SubmitButton, List } from './styles';
+import { ErrorLabel, InputForm, Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
   state = {
     newRepo: '',
     repositories: [],
     loading: false,
-    error: false,
+    error: '',
   };
 
   // loads data from localStorage.
@@ -34,7 +34,7 @@ export default class Main extends Component {
   }
 
   handleInputChange = e => {
-    this.setState({ newRepo: e.target.value, error: false });
+    this.setState({ newRepo: e.target.value, error: '' });
   };
 
   handleSubmit = async e => {
@@ -57,7 +57,7 @@ export default class Main extends Component {
         loading: false,
       });
     } catch (error) {
-      this.setState({ error: true, loading: false });
+      this.setState({ error: 'No repository found', loading: false });
     }
   };
 
@@ -87,7 +87,7 @@ export default class Main extends Component {
             )}
           </SubmitButton>
         </Form>
-
+        {error && <ErrorLabel>{error}</ErrorLabel>}
         <List>
           {repositories.map(repository => (
             <li key={repository.name}>

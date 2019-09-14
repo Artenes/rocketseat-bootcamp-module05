@@ -8,10 +8,16 @@ export const Form = styled.form`
 
 export const InputForm = styled.input`
   flex: 1;
-  border: 1px solid ${props => (props.error ? 'red' : '#eee')};
+  border: 1px solid ${props => (props.error ? '#ff7070' : '#eee')};
   padding: 10px 15px;
   border-radius: 4px;
   font-size: 16px;
+`;
+
+export const ErrorLabel = styled.small`
+  color: #ff7070;
+  font-size: 15px;
+  margin-top: 10px;
 `;
 
 const rotate = keyframes`
