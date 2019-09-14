@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Github repositories manager
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+<div style="display: flex;">
+  <a href="http://artenesbok.com/rocketseat-bootcamp-module05/" style="margin-right: 10px;">
+    <img src="images/screen01.png" alt="Managing repositories"/>
+  </a>
+  <a href="http://artenesbok.com/rocketseat-bootcamp-module05/">
+    <img src="images/screen02.png" alt="Repository details and issues"/>
+  </a>
+</div>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Rocketseat's GoStack bootcamp](https://rocketseat.com.br/bootcamp) introductory module to ReactJS. [See it live here](http://artenesbok.com/rocketseat-bootcamp-module05/).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# About
 
-### `npm test`
+A ReactJS app that uses `localStorage` to manage a list of your favorite github repositories.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After inserting a repository, you can see its details and browse its issues.
 
-### `npm run build`
+The project heavely uses [styled components](https://www.styled-components.com/) to style the application's layout.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Set up
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Clone the repository
+```sh
+git clone git@github.com:Artenes/rocketseat-bootcamp-module05.git
+cd rocketseat-bootcamp-module05
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies
+```sh
+yarn
+```
 
-### `npm run eject`
+3. Run the app
+```sh
+yarn dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Access [http://localhost:8080](http://localhost:8080).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Artenes Nogueira - [artenes.nogueira@gmail.com](mailto:artenes.nogueira@gmail.com)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Linkedin - [linkedin.com/in/artenes/](https://www.linkedin.com/in/artenes/)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Blog - [artenesbok.com/](http://artenesbok.com/)
