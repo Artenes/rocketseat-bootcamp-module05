@@ -45,7 +45,17 @@ export default class Main extends Component {
     try {
       const { newRepo, repositories } = this.state;
 
-      const response = await api.get(`repos/${newRepo}`);
+      if (repositories.find(repo => repo.name === newRepo)) {
+        throw new Error('Repository already added');
+      }
+
+      const response = await api.get(`repos/${newRepo}`).catch(error => {
+        if (error.response && error.response.status === 404) {
+          throw new Error('No repository found');
+        } else {
+          throw new Error('Connection error');
+        }
+      });
 
       const data = {
         name: response.data.full_name,
@@ -57,7 +67,9 @@ export default class Main extends Component {
         loading: false,
       });
     } catch (error) {
-      this.setState({ error: 'No repository found', loading: false });
+      // removes Error: prefix from message
+      const message = error.toString().substring(7);
+      this.setState({ error: message, loading: false });
     }
   };
 
