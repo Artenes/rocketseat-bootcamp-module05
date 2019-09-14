@@ -116,6 +116,33 @@ export const IssueList = styled.ul`
   }
 `;
 
+export const IssueTypes = styled.div`
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-evenly;
+
+  span {
+    background: #7159c1;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    margin-right: 5px;
+  }
+
+  .open {
+    background: #278a08;
+  }
+
+  .closed {
+    background: #d60000;
+  }
+`;
+
 export const Navigation = styled.div`
   display: flex;
   justify-content: center;
