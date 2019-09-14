@@ -57,9 +57,13 @@ export const IssueList = styled.ul`
   margin-top: 30px;
   border-top: 1px solid #eee;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   li {
     display: flex;
+    width: 100%;
     padding: 15px 10px;
     border: 1px solid #eee;
     border-radius: 4px;
@@ -109,5 +113,33 @@ export const IssueList = styled.ul`
         color: #999;
       }
     }
+  }
+`;
+
+export const Navigation = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const NavButton = styled.button.attrs(props => ({
+  type: 'button',
+  disabled: props.disabled,
+}))`
+  border: 0;
+  background: #7159c1;
+  color: #fff;
+  padding: 10px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background: #9150c9;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 `;

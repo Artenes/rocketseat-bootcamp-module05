@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 import api from '../../services/api';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, Navigation, NavButton } from './styles';
 import Container from '../../components/Container';
 
 // import { Container } from './styles';
@@ -20,10 +20,12 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    page: 1,
   };
 
   async componentDidMount() {
     const { match } = this.props;
+    const { page } = this.state;
     const repoName = decodeURIComponent(match.params.repository);
 
     const [repository, issues] = await Promise.all([
@@ -31,7 +33,7 @@ export default class Repository extends Component {
       api.get(`repos/${repoName}/issues`, {
         params: {
           state: 'open',
-          per_page: 5,
+          page,
         },
       }),
     ]);
@@ -43,8 +45,27 @@ export default class Repository extends Component {
     });
   }
 
+  handlePageChange = async page => {
+    const { repository } = this.state;
+
+    if (page < 1) {
+      return;
+    }
+
+    this.setState({ loading: true });
+
+    const response = await api.get(`repos/${repository.full_name}/issues`, {
+      params: {
+        state: 'open',
+        page,
+      },
+    });
+
+    this.setState({ page, loading: false, issues: response.data });
+  };
+
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, page } = this.state;
 
     if (loading) {
       return <Loading>Loading</Loading>;
@@ -77,7 +98,26 @@ export default class Repository extends Component {
               </div>
             </li>
           ))}
+          {issues.length === 0 && <h3>No issues found</h3>}
         </IssueList>
+
+        <Navigation>
+          <NavButton
+            disabled={page === 1}
+            onClick={() => {
+              this.handlePageChange(page - 1);
+            }}
+          >
+            <FaArrowLeft size="14" />
+          </NavButton>
+          <NavButton
+            onClick={() => {
+              this.handlePageChange(page + 1);
+            }}
+          >
+            <FaArrowRight size="14" />
+          </NavButton>
+        </Navigation>
       </Container>
     );
   }
